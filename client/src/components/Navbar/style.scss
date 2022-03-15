@@ -1,0 +1,27 @@
+.nav {
+    width: 100%;
+    height: 70px;
+    background-color: #022E57;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .product-name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .signup-btn {
+        margin-right: 20px;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .link {
+        color: white;
+        margin: 0 10%;
+    }
+}

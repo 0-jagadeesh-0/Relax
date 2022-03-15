@@ -1,0 +1,16 @@
+.yoga-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .yoga-card {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .yoga-card:hover img {
+        transform: scale(1.1);
+    }
+}

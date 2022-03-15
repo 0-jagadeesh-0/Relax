@@ -1,0 +1,17 @@
+.music-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .music-item {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        padding: 1%;
+
+        .music {
+            text-align: center;
+        }
+    }
+}

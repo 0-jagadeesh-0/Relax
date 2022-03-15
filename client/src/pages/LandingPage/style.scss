@@ -1,0 +1,37 @@
+.landing-page-container {
+    display: flex;
+    height: calc(100vh - 70px);
+    justify-content: center;
+    align-items: center;
+
+    .landing-page {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .info {
+                padding: 10px 0;
+            }
+
+            .btn-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+
+        .image {
+            .relax-image {
+                width: 600px;
+                height: 600px;
+            }
+        }
+
+    }
+}

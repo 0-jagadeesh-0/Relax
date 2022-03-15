@@ -1,0 +1,27 @@
+.playlist-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .playlist-item {
+        margin: 1%;
+        width: 25%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .playlist-image {
+            height: 80px;
+            width: 80px;
+        }
+
+        .playlist-title {
+            font-size: 1rem;
+            cursor: pointer;
+
+        }
+    }
+}

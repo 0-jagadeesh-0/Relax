@@ -1,0 +1,20 @@
+.books-container {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .books {
+        margin: 20px;
+        padding: 2%;
+    }
+
+    .book-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .book:hover .book-image {
+        transform: scale(1.1);
+    }
+}

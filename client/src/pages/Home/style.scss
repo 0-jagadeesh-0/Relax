@@ -1,0 +1,27 @@
+.main-home {
+    margin: 0;
+    padding: 0;
+
+    .home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 70px);
+
+        .categories {
+            display: flex;
+
+
+
+            .category {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 20px;
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+}

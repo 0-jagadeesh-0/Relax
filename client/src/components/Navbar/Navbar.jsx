@@ -53,13 +53,13 @@ function Navbar() {
 
     return <Box className="nav">
         <Box className='product-name'>
-            <Link style={{ color: "white", textDecoration: "none", marginLeft: "10px" }} href={localStorage.getItem("token") ? "/categories" : "/"} variant='h4'>
+            <Link className='pjt-name' style={{ color: "white", textDecoration: "none", marginLeft: "10px" }} href={localStorage.getItem("token") ? "/categories" : "/"} variant='h4'>
                 Relax
             </Link>
         </Box>
         {
             localStorage.getItem("token") ?
-                <Box style={{ display: "flex" }}>
+                <Box className='categories' >
                     <Link style={{ textDecoration: "none" }} className='link' href='/music'>
                         <Typography variant='h6'>
                             Music
@@ -81,6 +81,7 @@ function Navbar() {
         <Box>
             {
                 localStorage.getItem("token") ? <><IconButton
+                    className='icon'
                     aria-controls={open ? 'basic-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
@@ -98,10 +99,14 @@ function Navbar() {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={() => { history.push(`/profile/${localStorage.getItem("userId")}`) }}>Update Profile</MenuItem>
-                        <MenuItem onClick={() => { history.push(`/playlist/${localStorage.getItem("userId")}`) }}>My Playlist</MenuItem>
+                        <MenuItem onClick={() => { history.push(`/music`) }}>Music</MenuItem>
+                        <MenuItem onClick={() => { history.push(`/books`) }}>Books</MenuItem>
+                        <MenuItem onClick={() => { history.push(`/yoga`) }}>Yoga</MenuItem>
+
+
                     </Menu></> : null
             }
+
             <Button disableElevation size="small" onClick={handleClick} className='signup-btn'>
                 {name}
             </Button>

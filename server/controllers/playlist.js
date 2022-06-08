@@ -15,7 +15,8 @@ const createPlaylist = async (req, res) => {
                 musicId: req.body.music,
                 title: req.body.title,
                 song: req.body.song,
-                image: req.body.image
+                image: req.body.image,
+                inList: true
             });
             await newItem.save();
             res.status(200).json(newItem);
@@ -51,12 +52,14 @@ const removeSong = async (req, res) => {
 }
 
 const findInPlaylist = async (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     try {
+        console.log(typeof req.body.music);
         const playlist = await Playlist.find({ userId: id });
         playlist.forEach(ele => {
             if (ele.musicId === req.body.music) {
-                res.status(202).json(true);
+                console.log("found");
+                return res.status(202).send(true);
             }
         })
 

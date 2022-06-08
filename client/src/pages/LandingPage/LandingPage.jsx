@@ -22,7 +22,7 @@ function LandingPage() {
                         Here is the solution SignUp and Relax.
                     </Typography>
                         <Box className='btn-box'>
-                            <Button variant='contained' style={{ backgroundColor: "#022E57", color: "white" }} size="large" disableElevation onClick={() => { history.push("/signup") }}>
+                            <Button variant='contained' style={{ backgroundColor: "#022E57", color: "white" }} size="medium" disableElevation onClick={() => { history.push("/signup") }}>
                                 SIGNUP
                             </Button>
                         </Box></>}

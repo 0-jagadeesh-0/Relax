@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post("/add/:id", createPlaylist);
 
-router.get("/find/:id", findInPlaylist);
+router.post("/find/:id", findInPlaylist);
 
 router.get("/:id", getPlaylist);
 

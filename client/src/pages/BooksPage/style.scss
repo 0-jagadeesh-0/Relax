@@ -5,16 +5,35 @@
     align-items: center;
 
     .books {
+        display: flex;
+        flex-direction: column;
         margin: 20px;
         padding: 2%;
+        @media screen and (max-width:768px) {
+            width: 200px;
+            height: 200px;
+        }
+        .book{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     .book-image {
         width: 200px;
         height: 200px;
+        @media screen and (max-width:768px) {
+            width: 150px;
+            height: 150px;
+        }
     }
 
     .book:hover .book-image {
         transform: scale(1.1);
+    }
+    @media screen and (max-width:768px) {
+        flex-direction: column;
     }
 }

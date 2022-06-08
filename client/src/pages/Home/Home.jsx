@@ -9,9 +9,15 @@ import SelfImprovementIcon from '@material-ui/icons/AccessibilityNew';
 
 function Home() {
 
+    const firstName = localStorage.getItem("firstName");
+
     return <Box className='main-home'>
         <Navbar />
+        <Typography className="msg" >
+            Hello, {firstName} relax from <span style={{ color: "red" }} >stress</span>
+        </Typography>
         <Box className='home'>
+
             <Box className='categories'>
                 <Link to="/music" style={{ textDecoration: "none" }} >
                     <Paper className='category' elevation={3}>

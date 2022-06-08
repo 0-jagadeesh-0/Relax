@@ -19,7 +19,7 @@ const playListSchema = new mongoose.Schema({
     },
     inList: {
         type: Boolean,
-        default: true
+        default: false
     }
 }, {
     timestamps: true

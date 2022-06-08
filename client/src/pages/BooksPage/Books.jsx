@@ -22,7 +22,7 @@ function Books() {
                     return <Paper elevation={4} className='books' key={val.id}>
                         <Box className='book'>
                             <a href={val.book}><img className='book-image' src={val.image} alt='' /></a>
-                            <p style={{ textAlign: "center" }} >{val.title}</p>
+                            <p className='title' style={{ textAlign: "center" }} >{val.title}</p>
                         </Box>
                     </Paper>
                 })

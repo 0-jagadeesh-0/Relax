@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 
 const createUser = async (req, res) => {
     try {
+        // if(req.body.firstName===""||req.body.firstName===""||req.body.firstName===""||req.body.firstName===""||req.body.firstName===""||) return res.status(205).send
         const newUser = await new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -23,12 +24,13 @@ const createUser = async (req, res) => {
 const getUser = async (req, res) => {
     try {
         const { username, password } = req.body;
-        if (username === "" || password === "") return res.status(203).json("invalid credentials.")
+        if (username === "" || password === "") return res.status(203).json("Invalid credentials.")
         const user = await User.findOne({ username });
         if (user && (bcrypt.compareSync(password, user.password))) {
             // Generate an accessToken
             let accessToken = generateToken(user._id);
             res.status(200).json({
+                firstName: user.firstName,
                 username: user.username,
                 email: user.email,
                 token: accessToken,
@@ -36,7 +38,7 @@ const getUser = async (req, res) => {
             });
         }
         else {
-            res.status(204);
+            res.status(203).json("Invalid credentials.");
         }
     }
     catch (error) {

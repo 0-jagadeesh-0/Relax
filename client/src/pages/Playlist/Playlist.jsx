@@ -13,27 +13,24 @@ function Playlist() {
     const [update, setupdate] = useState(false);
 
     useEffect(() => {
-
-
         axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
             setplaylist(res.data);
         })
 
-    }, [])
+    }, [update])
 
     const handleClick = (id) => {
         history.push(`/song/${id}`);
     }
-    const handleRemove = (id) => {
+    const handleRemove = async (id) => {
         axios.delete(`http://localhost:5000/api/playlist/${id}`).then((res) => {
             console.log(res.data);
             setupdate(!update);
 
         })
-        axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
+        await axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
             setplaylist(res.data);
         })
-
     }
     return (
         <div>
@@ -47,7 +44,8 @@ function Playlist() {
                             <Typography onClick={() => { handleClick(ele.musicId) }} className='playlist-title'>
                                 {ele.title}
                             </Typography>
-                            <Button onClick={() => { handleRemove(ele._id) }} disableElevation size='small' style={{ margin: "0 10px", backgroundColor: "red" }} >
+
+                            <Button onClick={() => { handleRemove(ele._id) }} disableElevation size='small' style={{ color: "white", fontWeight: "bold", margin: "0 10px", backgroundColor: "red" }} >
                                 Remove
                             </Button>
 

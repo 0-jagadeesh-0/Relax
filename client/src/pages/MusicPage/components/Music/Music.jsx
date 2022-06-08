@@ -17,8 +17,11 @@ function Music() {
     const [play, setplay] = useState(true);
     const [item, setitem] = useState({ id: '', song: '', title: '', image: '' });
     const [totalSongs, settotalSongs] = useState(0);
-    const [foundItem, setfoundItem] = useState(false);
+    const [foundItem, setfoundItem] = useState('');
     const [musicId, setmusicId] = useState('');
+    const [first, setfirst] = useState(false);
+
+    const [playlist, setplaylist] = useState([]);
 
     const id = Number(window.location.pathname.split('/')[2]);
 
@@ -31,6 +34,7 @@ function Music() {
 
 
     useLayoutEffect(() => {
+        setplay(true);
         const setMusic = async () => {
             await axios.get("https://relaxtst.herokuapp.com/music").then((res) => {
                 const data = res.data.music;
@@ -45,20 +49,22 @@ function Music() {
         }
 
         setMusic();
+        // findItem(id);
 
 
-    }, [id])
+    }, [id, preSong, nextSong])
 
-    useEffect(() => {
-        const findItem = async (id) => {
-            console.log(id);
-            await axios.get(`http://localhost:5000/api/playlist/find/${localStorage.getItem("userId")}`,{music:id}).then((res) => {
-                setfoundItem(res.data);
-                console.log(foundItem);
-            })
-        }
-        findItem(item.id);
-    }, [])
+
+
+    const findItem = async (id) => {
+        console.log(id);
+        await axios.post(`http://localhost:5000/api/playlist/find/${localStorage.getItem("userId")}`, { music: id }).then((res) => {
+            setfoundItem(res.data);
+            console.log(foundItem);
+        })
+    }
+
+
 
 
 
@@ -81,13 +87,32 @@ function Music() {
 
     }
 
+    const setList = async () => {
+        await axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
+            setplaylist(res.data);
+            playlist.forEach(ele => {
+                if (ele.musicId === id) {
+                    setfoundItem(true);
+                }
+            })
+        })
+    }
 
 
     const handlePost = async (id, title, song, image) => {
 
         await axios.post(`http://localhost:5000/api/playlist/add/${localStorage.getItem("userId")}`, { music: id, title: title, song: song, image: image }).then((res) => {
             console.log(res);
+            setList();
         })
+    }
+
+    const handleRemove = async (id) => {
+        await axios.delete(`http://localhost:5000/api/playlist/${id}`).then((res) => {
+            console.log(res.data);
+
+        })
+
     }
 
     return <Box>
@@ -113,13 +138,13 @@ function Music() {
                 <Typography variant='h6' style={{ fontWeight: "bold", color: "white" }} >
                     {item.title}
                 </Typography>
-                <IconButton onClick={() => { handlePost(item.id, item.title, item.song, item.image) }} >
+                {/* <IconButton onClick={() => { handlePost(item.id, item.title, item.song, item.image) }} >
                     {
                         foundItem ? <PlayListAddCheck style={{ fontSize: "2rem", fontWeight: "bold", color: "white" }} /> :
                             <PlayListAdd style={{ fontSize: "2rem", fontWeight: "bold", color: "white" }} />
                     }
 
-                </IconButton>
+                </IconButton> */}
             </Paper>
         </Box>
 

@@ -30,7 +30,7 @@ function App() {
         <Route path="/song/:id" component={Music} />
         <Route path="/playlist/:id" component={Playlist} />
         <Route path="/profile/:id" component={Profile} />
-        <Route path="/signp" component={Signup} />
+        {/* <Route path="/signp" component={Signup} /> */}
 
       </Switch>
     </Router>

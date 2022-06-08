@@ -16,7 +16,7 @@ function Login() {
 
     const handleSubmit = async () => {
         try {
-            await axios.post("http://localhost:5000/api/login", { username, password }).then((res) => {
+            await axios.post("https://relax-from-stress.herokuapp.com/api/login", { username, password }).then((res) => {
                 if (res.status === 203) {
                     setError(true);
                     seterrorMessage(res.data);

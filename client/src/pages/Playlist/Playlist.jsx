@@ -13,7 +13,7 @@ function Playlist() {
     const [update, setupdate] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
+        axios.get(`https://relax-from-stress.herokuapp.com/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
             setplaylist(res.data);
         })
 
@@ -23,12 +23,12 @@ function Playlist() {
         history.push(`/song/${id}`);
     }
     const handleRemove = async (id) => {
-        axios.delete(`http://localhost:5000/api/playlist/${id}`).then((res) => {
+        axios.delete(`https://relax-from-stress.herokuapp.com/api/playlist/${id}`).then((res) => {
             console.log(res.data);
             setupdate(!update);
 
         })
-        await axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
+        await axios.get(`https://relax-from-stress.herokuapp.com/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
             setplaylist(res.data);
         })
     }

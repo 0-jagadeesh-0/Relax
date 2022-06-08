@@ -20,7 +20,7 @@ function Signup() {
             alert("Please fill the details.")
         }
         else {
-            const res = await axios.post("http://localhost:5000/api/register", { firstName, lastName, username, email, password }).then((res) => {
+            const res = await axios.post("https://relax-from-stress.herokuapp.com/api/register", { firstName, lastName, username, email, password }).then((res) => {
                 // console.log(res);
                 history.push('/signin');
             })

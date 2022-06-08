@@ -58,7 +58,7 @@ function Music() {
 
     const findItem = async (id) => {
         console.log(id);
-        await axios.post(`http://localhost:5000/api/playlist/find/${localStorage.getItem("userId")}`, { music: id }).then((res) => {
+        await axios.post(`https://relax-from-stress.herokuapp.com/api/playlist/find/${localStorage.getItem("userId")}`, { music: id }).then((res) => {
             setfoundItem(res.data);
             console.log(foundItem);
         })
@@ -88,7 +88,7 @@ function Music() {
     }
 
     const setList = async () => {
-        await axios.get(`http://localhost:5000/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
+        await axios.get(`https://relax-from-stress.herokuapp.com/api/playlist/${localStorage.getItem("userId")}`).then((res) => {
             setplaylist(res.data);
             playlist.forEach(ele => {
                 if (ele.musicId === id) {
@@ -101,14 +101,14 @@ function Music() {
 
     const handlePost = async (id, title, song, image) => {
 
-        await axios.post(`http://localhost:5000/api/playlist/add/${localStorage.getItem("userId")}`, { music: id, title: title, song: song, image: image }).then((res) => {
+        await axios.post(`https://relax-from-stress.herokuapp.com/api/playlist/add/${localStorage.getItem("userId")}`, { music: id, title: title, song: song, image: image }).then((res) => {
             console.log(res);
             setList();
         })
     }
 
     const handleRemove = async (id) => {
-        await axios.delete(`http://localhost:5000/api/playlist/${id}`).then((res) => {
+        await axios.delete(`https://relax-from-stress.herokuapp.com/api/playlist/${id}`).then((res) => {
             console.log(res.data);
 
         })
